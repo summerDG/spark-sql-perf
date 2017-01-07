@@ -19,8 +19,10 @@ package com.databricks.spark.sql.perf
 import java.net.InetAddress
 
 import org.apache.spark.sql.SQLContext
+import org.apache.spark.sql.catalyst.InternalRow
 import org.apache.spark.sql.functions._
-import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark.sql.internal.SQLConf
+import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.util.Try
 
@@ -28,7 +30,11 @@ case class RunConfig(
     benchmarkName: String = null,
     filter: Option[String] = None,
     iterations: Int = 3,
-    baseline: Option[Long] = None)
+    baseline: Option[Long] = None,
+    source: Option[String] = None,
+    parallel: Option[Int] = None,
+    cardinality: Option[Int] = None,
+    tries: Option[Int] = None)
 
 /**
  * Runs a benchmark locally and prints the results to the screen.
@@ -50,6 +56,19 @@ object RunBenchmark {
       opt[Long]('c', "compare")
           .action((x, c) => c.copy(baseline = Some(x)))
           .text("the timestamp of the baseline experiment to compare with")
+      opt[String]('s', "source")
+        .action((x, c) => c.copy(source = Some(x)))
+        .text("The data source of performance testing")
+      opt[Int]('p', "parallel")
+        .action((x, c) => c.copy(parallel = Some(x)))
+        .text("The data source of performance testing")
+      opt[Int]('C', "Cardinality")
+        .action((x, c) => c.copy(cardinality = Some(x)))
+        .text("The data source of performance testing")
+      opt[Int]('t', "tries")
+        .action((x, c) => c.copy(tries = Some(x)))
+        .text("The data source of performance testing")
+
       help("help")
         .text("prints this usage text")
     }
@@ -64,14 +83,29 @@ object RunBenchmark {
 
   def run(config: RunConfig): Unit = {
     val conf = new SparkConf()
-        .setMaster("local[*]")
         .setAppName(getClass.getName)
 
     val sc = SparkContext.getOrCreate(conf)
     val sqlContext = SQLContext.getOrCreate(sc)
     import sqlContext.implicits._
 
+    sqlContext.setConf("spark.driver.allowMultipleContexts", "true")
+    sqlContext.setConf("spark.sql.codegen.wholeStage", "false")
+//    sqlContext.setConf("spark.sql.hypercube.strategiesChoosing", strategiesChoosing)
+    sqlContext.setConf("spark.sql.hypercube.sampleCardinality",
+      config.cardinality.getOrElse(1000).toString)
+    sqlContext.setConf("spark.sql.hypercube.sketchTries",
+      config.tries.getOrElse(500).toString)
+    if (config.parallel.isDefined) {
+      sqlContext.setConf(SQLConf.SHUFFLE_PARTITIONS.key, config.parallel.get.toString)
+    }
+    sqlContext.setConf(SQLConf.ADAPTIVE_EXECUTION_ENABLED.key, "true")
+    sqlContext.setConf(SQLConf.AUTO_BROADCASTJOIN_THRESHOLD.key, "-1")
+
     sqlContext.setConf("spark.sql.perf.results", new java.io.File("performance").toURI.toString)
+    sqlContext.setConf("spark.sql.perf.dataSource",
+      config.source.getOrElse("/home/wuxiaoqi/multi-join/test-data/small-data/"))
+
     val benchmark = Try {
       Class.forName(config.benchmarkName)
           .newInstance()
@@ -82,11 +116,15 @@ object RunBenchmark {
           .asInstanceOf[Benchmark]
     }
 
+    println("== QUERY LIST ==")
+    benchmark.allQueries.foreach(println)
     val allQueries = config.filter.map { f =>
       benchmark.allQueries.filter(_.name contains f)
     } getOrElse {
       benchmark.allQueries
     }
+
+    val variations = benchmark.strategiesChoosing
 
     println("== QUERY LIST ==")
     allQueries.foreach(println)
@@ -94,6 +132,7 @@ object RunBenchmark {
     val experiment = benchmark.runExperiment(
       executionsToRun = allQueries,
       iterations = config.iterations,
+      variations = Seq(variations),
       tags = Map(
         "runtype" -> "local",
         "host" -> InetAddress.getLocalHost().getHostName()))
@@ -102,7 +141,8 @@ object RunBenchmark {
     experiment.waitForFinish(1000 * 60 * 30)
 
     sqlContext.setConf("spark.sql.shuffle.partitions", "1")
-    experiment.getCurrentRuns()
+    println("== Choosing Strategies ==")
+    experiment.getCurrentRuns().where($"tags".getItem("strategiesChoosing") === "on")
         .withColumn("result", explode($"results"))
         .select("result.*")
         .groupBy("name")
@@ -113,6 +153,18 @@ object RunBenchmark {
           stddev($"executionTime") as 'stdDev)
         .orderBy("name")
         .show(truncate = false)
+    println("== Not Choosing Strategies ==")
+    experiment.getCurrentRuns().where($"tags".getItem("strategiesChoosing") === "off")
+      .withColumn("result", explode($"results"))
+      .select("result.*")
+      .groupBy("name")
+      .agg(
+        min($"executionTime") as 'minTimeMs,
+        max($"executionTime") as 'maxTimeMs,
+        avg($"executionTime") as 'avgTimeMs,
+        stddev($"executionTime") as 'stdDev)
+      .orderBy("name")
+      .show(truncate = false)
     println(s"""Results: sqlContext.read.json("${experiment.resultPath}")""")
 
     config.baseline.foreach { baseTimestamp =>

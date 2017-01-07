@@ -82,6 +82,11 @@ abstract class Benchmark(
     case "on" => sqlContext.setConf("spark.sql.tungsten.enabled", "true")
   }
 
+  val strategiesChoosing = Variation("strategiesChoosing", Seq("on", "off")) {
+    case "off" => sqlContext.setConf("spark.sql.hypercube.strategiesChoosing", "false")
+    case "on" => sqlContext.setConf("spark.sql.hypercube.strategiesChoosing", "true")
+  }
+
   /**
    * Starts an experiment run with a given set of executions to run.
    *
@@ -143,15 +148,16 @@ abstract class Benchmark(
     myType.declarations
       .filter(m => m.isMethod)
       .map(_.asMethod)
-      .filter(_.asMethod.returnType =:= typeOf[Benchmarkable])
-      .map(method => runtimeMirror.reflect(this).reflectMethod(method).apply().asInstanceOf[Benchmarkable])
+      .filter(_.asMethod.returnType =:= typeOf[Query])
+      .map(method => runtimeMirror.reflect(this).reflectMethod(method).apply().asInstanceOf[Query])
 
-  def groupedQueries =
+  def groupedQueries = {
     myType.declarations
       .filter(m => m.isMethod)
       .map(_.asMethod)
-      .filter(_.asMethod.returnType =:= typeOf[Seq[Benchmarkable]])
-      .flatMap(method => runtimeMirror.reflect(this).reflectMethod(method).apply().asInstanceOf[Seq[Benchmarkable]])
+      .filter(_.asMethod.returnType =:= typeOf[Seq[Query]])
+      .flatMap(method => runtimeMirror.reflect(this).reflectMethod(method).apply().asInstanceOf[Seq[Query]])
+  }
 
   @transient
   lazy val allQueries = (singleQueries ++ groupedQueries).toSeq
