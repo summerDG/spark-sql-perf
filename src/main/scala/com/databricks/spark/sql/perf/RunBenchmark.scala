@@ -138,7 +138,7 @@ object RunBenchmark {
         "host" -> InetAddress.getLocalHost().getHostName()))
 
     println("== STARTING EXPERIMENT ==")
-    experiment.waitForFinish(1000 * 60 * 30)
+    experiment.waitForFinish(1000 * 60 * 60 * 3)
 
     sqlContext.setConf("spark.sql.shuffle.partitions", "1")
     println("== Choosing Strategies ==")

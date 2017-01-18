@@ -407,6 +407,9 @@ object Benchmark {
                   failures += 1
                   logMessage(s"Execution '${q.name}' failed: ${f.message}")
                 }
+                singleResult.analysisTime.foreach { time =>
+                  logMessage(s"analysis time: ${time / 1000}s")
+                }
                 singleResult.executionTime.foreach { time =>
                   logMessage(s"Execution time: ${time / 1000}s")
                 }

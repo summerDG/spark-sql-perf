@@ -1,0 +1,616 @@
+Using /opt/jdk1.7.0_79 as default JAVA_HOME.
+Note, this will be overridden by -java-home if it is set.
+[0m[[0minfo[0m] [0mLoading project definition from /home/wuxiaoqi/Git/spark-sql-perf/project[0m
+Missing bintray credentials /home/wuxiaoqi/.bintray/.credentials. Some bintray features depend on this.
+[0m[[0minfo[0m] [0mSet current project to spark-sql-perf (in build file:/home/wuxiaoqi/Git/spark-sql-perf/)[0m
+[0m[[33mwarn[0m] [0mCredentials file /home/wuxiaoqi/.bintray/.credentials does not exist[0m
+[0m[[0minfo[0m] [0mRunning com.databricks.spark.sql.perf.RunBenchmark --benchmark MultiJoinPerformance[0m
+[0m[[31merror[0m] [0mUsing Spark's default log4j profile: org/apache/spark/log4j-defaults.properties[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SparkContext: Running Spark version 2.0.1[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 WARN Utils: Your hostname, wuxiaoqi resolves to a loopback address: 127.0.1.1; using 114.212.85.154 instead (on interface eno1)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SecurityManager: Changing view acls to: wuxiaoqi[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SecurityManager: Changing modify acls to: wuxiaoqi[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SecurityManager: Changing view acls groups to: [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SecurityManager: Changing modify acls groups to: [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(wuxiaoqi); groups with view permissions: Set(); users  with modify permissions: Set(wuxiaoqi); groups with modify permissions: Set()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO Utils: Successfully started service 'sparkDriver' on port 42429.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SparkEnv: Registering MapOutputTracker[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SparkEnv: Registering BlockManagerMaster[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-a5f3f107-67b1-490d-b3a0-29c2a6eaa7bd[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO MemoryStore: MemoryStore started with capacity 877.2 MB[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:27 INFO SparkEnv: Registering OutputCommitCoordinator[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO Utils: Successfully started service 'SparkUI' on port 4040.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://114.212.85.154:4040[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO Executor: Starting executor ID driver on host localhost[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 41308.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO NettyBlockTransferService: Server created on 114.212.85.154:41308[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 114.212.85.154, 41308)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO BlockManagerMasterEndpoint: Registering block manager 114.212.85.154:41308 with 877.2 MB RAM, BlockManagerId(driver, 114.212.85.154, 41308)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 114.212.85.154, 41308)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 WARN SparkContext: Use an existing SparkContext, some configuration may not take effect.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO SharedState: Warehouse path is '/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse'.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO SparkContext: Starting job: count at MultiJoinPerformance.scala:48[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO DAGScheduler: Got job 0 (count at MultiJoinPerformance.scala:48) with 4 output partitions[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO DAGScheduler: Final stage: ResultStage 0 (count at MultiJoinPerformance.scala:48)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO DAGScheduler: Parents of final stage: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO DAGScheduler: Missing parents: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:28 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[2] at mapPartitions at MultiJoinPerformance.scala:43), which has no missing parents[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 2.1 KB, free 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 1376.0 B, free 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 114.212.85.154:41308 (size: 1376.0 B, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1012[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Submitting 4 missing tasks from ResultStage 0 (MapPartitionsRDD[2] at mapPartitions at MultiJoinPerformance.scala:43)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSchedulerImpl: Adding task set 0.0 with 4 tasks[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, partition 0, PROCESS_LOCAL, 5560 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Starting task 1.0 in stage 0.0 (TID 1, localhost, partition 1, PROCESS_LOCAL, 5635 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Starting task 2.0 in stage 0.0 (TID 2, localhost, partition 2, PROCESS_LOCAL, 5561 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Starting task 3.0 in stage 0.0 (TID 3, localhost, partition 3, PROCESS_LOCAL, 5636 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Running task 2.0 in stage 0.0 (TID 2)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Running task 1.0 in stage 0.0 (TID 1)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Running task 3.0 in stage 0.0 (TID 3)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Finished task 1.0 in stage 0.0 (TID 1). 954 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 954 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Finished task 2.0 in stage 0.0 (TID 2). 954 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Finished task 3.0 in stage 0.0 (TID 3). 867 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 346 ms on localhost (1/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Finished task 1.0 in stage 0.0 (TID 1) in 326 ms on localhost (2/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Finished task 3.0 in stage 0.0 (TID 3) in 323 ms on localhost (3/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Finished task 2.0 in stage 0.0 (TID 2) in 326 ms on localhost (4/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: ResultStage 0 (count at MultiJoinPerformance.scala:48) finished in 0.358 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Job 0 finished: count at MultiJoinPerformance.scala:48, took 0.486956 s[0m
+[0m[[0minfo[0m] [0mdf size: 99309[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO BlockManagerInfo: Removed broadcast_0_piece0 on 114.212.85.154:41308 in memory (size: 1376.0 B, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO SparkContext: Starting job: count at MultiJoinPerformance.scala:48[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Got job 1 (count at MultiJoinPerformance.scala:48) with 4 output partitions[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Final stage: ResultStage 1 (count at MultiJoinPerformance.scala:48)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Parents of final stage: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Missing parents: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[6] at mapPartitions at MultiJoinPerformance.scala:43), which has no missing parents[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 2.1 KB, free 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 1360.0 B, free 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 114.212.85.154:41308 (size: 1360.0 B, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1012[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Submitting 4 missing tasks from ResultStage 1 (MapPartitionsRDD[6] at mapPartitions at MultiJoinPerformance.scala:43)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSchedulerImpl: Adding task set 1.0 with 4 tasks[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 4, localhost, partition 0, PROCESS_LOCAL, 5560 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Starting task 1.0 in stage 1.0 (TID 5, localhost, partition 1, PROCESS_LOCAL, 5635 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Starting task 2.0 in stage 1.0 (TID 6, localhost, partition 2, PROCESS_LOCAL, 5561 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Starting task 3.0 in stage 1.0 (TID 7, localhost, partition 3, PROCESS_LOCAL, 5636 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Running task 2.0 in stage 1.0 (TID 6)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Running task 1.0 in stage 1.0 (TID 5)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Running task 0.0 in stage 1.0 (TID 4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Running task 3.0 in stage 1.0 (TID 7)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Finished task 0.0 in stage 1.0 (TID 4). 794 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 4) in 103 ms on localhost (1/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Finished task 3.0 in stage 1.0 (TID 7). 881 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Finished task 3.0 in stage 1.0 (TID 7) in 99 ms on localhost (2/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Finished task 1.0 in stage 1.0 (TID 5). 794 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO Executor: Finished task 2.0 in stage 1.0 (TID 6). 794 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Finished task 1.0 in stage 1.0 (TID 5) in 104 ms on localhost (3/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSetManager: Finished task 2.0 in stage 1.0 (TID 6) in 102 ms on localhost (4/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: ResultStage 1 (count at MultiJoinPerformance.scala:48) finished in 0.107 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:29 INFO DAGScheduler: Job 1 finished: count at MultiJoinPerformance.scala:48, took 0.113780 s[0m
+[0m[[0minfo[0m] [0mdf size: 99309[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO BlockManagerInfo: Removed broadcast_1_piece0 on 114.212.85.154:41308 in memory (size: 1360.0 B, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO ParquetFileFormat: Using default output committer for Parquet: org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO SparkContext: Starting job: saveAsTable at MultiJoinPerformance.scala:65[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DAGScheduler: Got job 2 (saveAsTable at MultiJoinPerformance.scala:65) with 4 output partitions[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DAGScheduler: Final stage: ResultStage 2 (saveAsTable at MultiJoinPerformance.scala:65)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DAGScheduler: Parents of final stage: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DAGScheduler: Missing parents: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[8] at saveAsTable at MultiJoinPerformance.scala:65), which has no missing parents[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 54.9 KB, free 877.1 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 20.7 KB, free 877.1 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 114.212.85.154:41308 (size: 20.7 KB, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:1012[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DAGScheduler: Submitting 4 missing tasks from ResultStage 2 (MapPartitionsRDD[8] at saveAsTable at MultiJoinPerformance.scala:65)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO TaskSchedulerImpl: Adding task set 2.0 with 4 tasks[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 8, localhost, partition 0, PROCESS_LOCAL, 5682 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO TaskSetManager: Starting task 1.0 in stage 2.0 (TID 9, localhost, partition 1, PROCESS_LOCAL, 5757 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO TaskSetManager: Starting task 2.0 in stage 2.0 (TID 10, localhost, partition 2, PROCESS_LOCAL, 5683 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO TaskSetManager: Starting task 3.0 in stage 2.0 (TID 11, localhost, partition 3, PROCESS_LOCAL, 5758 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO Executor: Running task 0.0 in stage 2.0 (TID 8)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO Executor: Running task 3.0 in stage 2.0 (TID 11)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO Executor: Running task 1.0 in stage 2.0 (TID 9)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO Executor: Running task 2.0 in stage 2.0 (TID 10)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapreduce.outputformat.class is deprecated. Instead, use mapreduce.job.outputformat.class[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapred.output.key.class is deprecated. Instead, use mapreduce.job.output.key.class[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO deprecation: mapred.output.value.class is deprecated. Instead, use mapreduce.job.output.value.class[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO CodeGenerator: Code generated in 147.384184 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:[0m
+[0m[[31merror[0m] [0m{[0m
+[0m[[31merror[0m] [0m  "type" : "struct",[0m
+[0m[[31merror[0m] [0m  "fields" : [ {[0m
+[0m[[31merror[0m] [0m    "name" : "source",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  }, {[0m
+[0m[[31merror[0m] [0m    "name" : "target",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  } ][0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0mand corresponding Parquet message type:[0m
+[0m[[31merror[0m] [0mmessage spark_schema {[0m
+[0m[[31merror[0m] [0m  optional int64 source;[0m
+[0m[[31merror[0m] [0m  optional int64 target;[0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0m[0m
+[0m[[31merror[0m] [0m       [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:[0m
+[0m[[31merror[0m] [0m{[0m
+[0m[[31merror[0m] [0m  "type" : "struct",[0m
+[0m[[31merror[0m] [0m  "fields" : [ {[0m
+[0m[[31merror[0m] [0m    "name" : "source",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  }, {[0m
+[0m[[31merror[0m] [0m    "name" : "target",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  } ][0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0mand corresponding Parquet message type:[0m
+[0m[[31merror[0m] [0mmessage spark_schema {[0m
+[0m[[31merror[0m] [0m  optional int64 source;[0m
+[0m[[31merror[0m] [0m  optional int64 target;[0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0m[0m
+[0m[[31merror[0m] [0m       [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:[0m
+[0m[[31merror[0m] [0m{[0m
+[0m[[31merror[0m] [0m  "type" : "struct",[0m
+[0m[[31merror[0m] [0m  "fields" : [ {[0m
+[0m[[31merror[0m] [0m    "name" : "source",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  }, {[0m
+[0m[[31merror[0m] [0m    "name" : "target",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  } ][0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0mand corresponding Parquet message type:[0m
+[0m[[31merror[0m] [0mmessage spark_schema {[0m
+[0m[[31merror[0m] [0m  optional int64 source;[0m
+[0m[[31merror[0m] [0m  optional int64 target;[0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0m[0m
+[0m[[31merror[0m] [0m       [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:[0m
+[0m[[31merror[0m] [0m{[0m
+[0m[[31merror[0m] [0m  "type" : "struct",[0m
+[0m[[31merror[0m] [0m  "fields" : [ {[0m
+[0m[[31merror[0m] [0m    "name" : "source",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  }, {[0m
+[0m[[31merror[0m] [0m    "name" : "target",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  } ][0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0mand corresponding Parquet message type:[0m
+[0m[[31merror[0m] [0mmessage spark_schema {[0m
+[0m[[31merror[0m] [0m  optional int64 source;[0m
+[0m[[31merror[0m] [0m  optional int64 target;[0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0m[0m
+[0m[[31merror[0m] [0m       [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO CodecPool: Got brand-new compressor [.snappy][0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO CodecPool: Got brand-new compressor [.snappy][0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO CodecPool: Got brand-new compressor [.snappy][0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO CodecPool: Got brand-new compressor [.snappy][0m
+[0m[[31merror[0m] [0m17/01/04 23:16:30 INFO CodeGenerator: Code generated in 22.13772 ms[0m
+[0m[[31merror[0m] [0mSLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".[0m
+[0m[[31merror[0m] [0mSLF4J: Defaulting to no-operation (NOP) logger implementation[0m
+[0m[[31merror[0m] [0mSLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0002_m_000002_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/edges/_temporary/0/task_201701042316_0002_m_000002[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0002_m_000000_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/edges/_temporary/0/task_201701042316_0002_m_000000[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0002_m_000003_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/edges/_temporary/0/task_201701042316_0002_m_000003[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkHadoopMapRedUtil: attempt_201701042316_0002_m_000002_0: Committed[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0002_m_000001_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/edges/_temporary/0/task_201701042316_0002_m_000001[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkHadoopMapRedUtil: attempt_201701042316_0002_m_000003_0: Committed[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkHadoopMapRedUtil: attempt_201701042316_0002_m_000001_0: Committed[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkHadoopMapRedUtil: attempt_201701042316_0002_m_000000_0: Committed[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Finished task 1.0 in stage 2.0 (TID 9). 968 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Finished task 2.0 in stage 2.0 (TID 10). 1055 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Finished task 3.0 in stage 2.0 (TID 11). 968 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Finished task 0.0 in stage 2.0 (TID 8). 968 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Finished task 2.0 in stage 2.0 (TID 10) in 757 ms on localhost (1/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Finished task 3.0 in stage 2.0 (TID 11) in 756 ms on localhost (2/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Finished task 1.0 in stage 2.0 (TID 9) in 760 ms on localhost (3/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 8) in 761 ms on localhost (4/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: ResultStage 2 (saveAsTable at MultiJoinPerformance.scala:65) finished in 0.763 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: Job 2 finished: saveAsTable at MultiJoinPerformance.scala:65, took 0.790972 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DefaultWriterContainer: Job job_201701042316_0000 committed.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CreateDataSourceTableUtils: Persisting data source relation `edges` with a single input path into Hive metastore in Hive compatible format. Input path: file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/edges.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: circles[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO ParquetFileFormat: Using default output committer for Parquet: org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkContext: Starting job: saveAsTable at MultiJoinPerformance.scala:65[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: Got job 3 (saveAsTable at MultiJoinPerformance.scala:65) with 4 output partitions[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: Final stage: ResultStage 3 (saveAsTable at MultiJoinPerformance.scala:65)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: Parents of final stage: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: Missing parents: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[11] at saveAsTable at MultiJoinPerformance.scala:65), which has no missing parents[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 54.9 KB, free 877.1 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 20.7 KB, free 877.1 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 114.212.85.154:41308 (size: 20.7 KB, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1012[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: Submitting 4 missing tasks from ResultStage 3 (MapPartitionsRDD[11] at saveAsTable at MultiJoinPerformance.scala:65)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSchedulerImpl: Adding task set 3.0 with 4 tasks[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 12, localhost, partition 0, PROCESS_LOCAL, 5682 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Starting task 1.0 in stage 3.0 (TID 13, localhost, partition 1, PROCESS_LOCAL, 5757 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO ContextCleaner: Cleaned accumulator 220[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Starting task 2.0 in stage 3.0 (TID 14, localhost, partition 2, PROCESS_LOCAL, 5683 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO BlockManagerInfo: Removed broadcast_2_piece0 on 114.212.85.154:41308 in memory (size: 20.7 KB, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Starting task 3.0 in stage 3.0 (TID 15, localhost, partition 3, PROCESS_LOCAL, 5758 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Running task 0.0 in stage 3.0 (TID 12)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Running task 1.0 in stage 3.0 (TID 13)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Running task 3.0 in stage 3.0 (TID 15)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Running task 2.0 in stage 3.0 (TID 14)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:[0m
+[0m[[31merror[0m] [0m{[0m
+[0m[[31merror[0m] [0m  "type" : "struct",[0m
+[0m[[31merror[0m] [0m  "fields" : [ {[0m
+[0m[[31merror[0m] [0m    "name" : "source",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  }, {[0m
+[0m[[31merror[0m] [0m    "name" : "target",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  } ][0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0mand corresponding Parquet message type:[0m
+[0m[[31merror[0m] [0mmessage spark_schema {[0m
+[0m[[31merror[0m] [0m  optional int64 source;[0m
+[0m[[31merror[0m] [0m  optional int64 target;[0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0m[0m
+[0m[[31merror[0m] [0m       [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:[0m
+[0m[[31merror[0m] [0m{[0m
+[0m[[31merror[0m] [0m  "type" : "struct",[0m
+[0m[[31merror[0m] [0m  "fields" : [ {[0m
+[0m[[31merror[0m] [0m    "name" : "source",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  }, {[0m
+[0m[[31merror[0m] [0m    "name" : "target",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  } ][0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0mand corresponding Parquet message type:[0m
+[0m[[31merror[0m] [0mmessage spark_schema {[0m
+[0m[[31merror[0m] [0m  optional int64 source;[0m
+[0m[[31merror[0m] [0m  optional int64 target;[0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0m[0m
+[0m[[31merror[0m] [0m       [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:[0m
+[0m[[31merror[0m] [0m{[0m
+[0m[[31merror[0m] [0m  "type" : "struct",[0m
+[0m[[31merror[0m] [0m  "fields" : [ {[0m
+[0m[[31merror[0m] [0m    "name" : "source",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  }, {[0m
+[0m[[31merror[0m] [0m    "name" : "target",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  } ][0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0mand corresponding Parquet message type:[0m
+[0m[[31merror[0m] [0mmessage spark_schema {[0m
+[0m[[31merror[0m] [0m  optional int64 source;[0m
+[0m[[31merror[0m] [0m  optional int64 target;[0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0m[0m
+[0m[[31merror[0m] [0m       [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CodecPool: Got brand-new compressor [.snappy][0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CodecPool: Got brand-new compressor [.snappy][0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CodecPool: Got brand-new compressor [.snappy][0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DefaultWriterContainer: Using user defined output committer class org.apache.parquet.hadoop.ParquetOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO ParquetWriteSupport: Initialized Parquet WriteSupport with Catalyst schema:[0m
+[0m[[31merror[0m] [0m{[0m
+[0m[[31merror[0m] [0m  "type" : "struct",[0m
+[0m[[31merror[0m] [0m  "fields" : [ {[0m
+[0m[[31merror[0m] [0m    "name" : "source",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  }, {[0m
+[0m[[31merror[0m] [0m    "name" : "target",[0m
+[0m[[31merror[0m] [0m    "type" : "long",[0m
+[0m[[31merror[0m] [0m    "nullable" : true,[0m
+[0m[[31merror[0m] [0m    "metadata" : { }[0m
+[0m[[31merror[0m] [0m  } ][0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0mand corresponding Parquet message type:[0m
+[0m[[31merror[0m] [0mmessage spark_schema {[0m
+[0m[[31merror[0m] [0m  optional int64 source;[0m
+[0m[[31merror[0m] [0m  optional int64 target;[0m
+[0m[[31merror[0m] [0m}[0m
+[0m[[31merror[0m] [0m[0m
+[0m[[31merror[0m] [0m       [0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet block size to 134217728[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet block size to 134217728[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet dictionary page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet dictionary page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Dictionary is on[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Dictionary is on[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Validation is off[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Validation is off[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Writer version is: PARQUET_1_0[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Writer version is: PARQUET_1_0[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet block size to 134217728[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet dictionary page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Dictionary is on[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Validation is off[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Writer version is: PARQUET_1_0[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet block size to 134217728[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet dictionary page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Dictionary is on[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Validation is off[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Writer version is: PARQUET_1_0[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.InternalParquetRecordWriter: Flushing mem columnStore to file. allocated memory: 170,720[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.InternalParquetRecordWriter: Flushing mem columnStore to file. allocated memory: 194,000[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.InternalParquetRecordWriter: Flushing mem columnStore to file. allocated memory: 224,264[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:30 信息: org.apache.parquet.hadoop.InternalParquetRecordWriter: Flushing mem columnStore to file. allocated memory: 238,472[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 19,578B for [source] INT64: 23,334 values, 26,309B raw, 19,531B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 438 entries, 3,504B raw, 438B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 22,871B for [source] INT64: 26,781 values, 33,543B raw, 22,824B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 586 entries, 4,688B raw, 586B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 23,412B for [source] INT64: 28,554 values, 35,766B raw, 23,365B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 602 entries, 4,816B raw, 602B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 26,362B for [target] INT64: 23,334 values, 26,309B raw, 26,315B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 478 entries, 3,824B raw, 478B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 33,596B for [target] INT64: 26,781 values, 33,543B raw, 33,549B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 666 entries, 5,328B raw, 666B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 35,822B for [target] INT64: 28,554 values, 35,766B raw, 35,775B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 653 entries, 5,224B raw, 653B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 16,879B for [source] INT64: 20,640 values, 23,270B raw, 16,832B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 336 entries, 2,688B raw, 336B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 23,323B for [target] INT64: 20,640 values, 23,270B raw, 23,276B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 364 entries, 2,912B raw, 364B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet block size to 134217728[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet dictionary page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Dictionary is on[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Validation is off[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Writer version is: PARQUET_1_0[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet block size to 134217728[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet dictionary page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Dictionary is on[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Validation is off[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0003_m_000001_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/circles/_temporary/0/task_201701042316_0003_m_000001[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0003_m_000000_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/circles/_temporary/0/task_201701042316_0003_m_000000[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkHadoopMapRedUtil: attempt_201701042316_0003_m_000001_0: Committed[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkHadoopMapRedUtil: attempt_201701042316_0003_m_000000_0: Committed[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Writer version is: PARQUET_1_0[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet block size to 134217728[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet dictionary page size to 1048576[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Finished task 1.0 in stage 3.0 (TID 13). 968 bytes result sent to driver[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Dictionary is on[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Finished task 0.0 in stage 3.0 (TID 12). 968 bytes result sent to driver[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Validation is off[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Writer version is: PARQUET_1_0[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.codec.CodecConfig: Compression: SNAPPY[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet block size to 134217728[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Finished task 1.0 in stage 3.0 (TID 13) in 81 ms on localhost (1/4)[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet page size to 1048576[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 12) in 83 ms on localhost (2/4)[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Parquet dictionary page size to 1048576[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Dictionary is on[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Validation is off[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ParquetOutputFormat: Writer version is: PARQUET_1_0[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0003_m_000002_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/circles/_temporary/0/task_201701042316_0003_m_000002[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkHadoopMapRedUtil: attempt_201701042316_0003_m_000002_0: Committed[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Finished task 2.0 in stage 3.0 (TID 14). 968 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CodecPool: Got brand-new compressor [.snappy][0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Finished task 2.0 in stage 3.0 (TID 14) in 85 ms on localhost (3/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0003_m_000003_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/circles/_temporary/0/task_201701042316_0003_m_000003[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkHadoopMapRedUtil: attempt_201701042316_0003_m_000003_0: Committed[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO Executor: Finished task 3.0 in stage 3.0 (TID 15). 968 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSetManager: Finished task 3.0 in stage 3.0 (TID 15) in 110 ms on localhost (4/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: ResultStage 3 (saveAsTable at MultiJoinPerformance.scala:65) finished in 0.117 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DAGScheduler: Job 3 finished: saveAsTable at MultiJoinPerformance.scala:65, took 0.155108 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO DefaultWriterContainer: Job job_201701042316_0000 committed.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CreateDataSourceTableUtils: Persisting data source relation `circles` with a single input path into Hive metastore in Hive compatible format. Input path: file:/home/wuxiaoqi/Git/spark-sql-perf/spark-warehouse/circles.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO SparkSqlParser: Parsing command: edges[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:31 INFO CatalystSqlParser: Parsing command: bigint[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:== QUERY LIST ==[0m
+[0m[[0minfo[0m] [0m== STARTING EXPERIMENT ==[0m
+[0m[[0minfo[0m] [0mResults written to table: 'sqlPerformance' at file:/home/wuxiaoqi/Git/spark-sql-perf/performance//timestamp=1483542991826[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO CodeGenerator: Code generated in 103.479442 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DefaultWriterContainer: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO SparkContext: Starting job: save at Benchmark.scala:436[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DAGScheduler: Got job 4 (save at Benchmark.scala:436) with 1 output partitions[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DAGScheduler: Final stage: ResultStage 4 (save at Benchmark.scala:436)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DAGScheduler: Parents of final stage: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DAGScheduler: Missing parents: List()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DAGScheduler: Submitting ResultStage 4 (CoalescedRDD[16] at save at Benchmark.scala:436), which has no missing parents[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 53.7 KB, free 877.1 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 20.5 KB, free 877.1 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on 114.212.85.154:41308 (size: 20.5 KB, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO SparkContext: Created broadcast 4 from broadcast at DAGScheduler.scala:1012[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 4 (CoalescedRDD[16] at save at Benchmark.scala:436)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO TaskSchedulerImpl: Adding task set 4.0 with 1 tasks[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO TaskSetManager: Starting task 0.0 in stage 4.0 (TID 16, localhost, partition 0, PROCESS_LOCAL, 9197 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO Executor: Running task 0.0 in stage 4.0 (TID 16)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DefaultWriterContainer: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO FileOutputCommitter: Saved output of task 'attempt_201701042316_0004_m_000000_0' to file:/home/wuxiaoqi/Git/spark-sql-perf/performance/timestamp=1483542991826/_temporary/0/task_201701042316_0004_m_000000[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO SparkHadoopMapRedUtil: attempt_201701042316_0004_m_000000_0: Committed[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO Executor: Finished task 0.0 in stage 4.0 (TID 16). 968 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO TaskSetManager: Finished task 0.0 in stage 4.0 (TID 16) in 35 ms on localhost (1/1)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DAGScheduler: ResultStage 4 (save at Benchmark.scala:436) finished in 0.036 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DAGScheduler: Job 4 finished: save at Benchmark.scala:436, took 0.052876 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO DefaultWriterContainer: Job job_201701042316_0000 committed.[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO SparkSqlParser: Parsing command: currentRuns[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO BlockManagerInfo: Removed broadcast_4_piece0 on 114.212.85.154:41308 in memory (size: 20.5 KB, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO ContextCleaner: Cleaned accumulator 331[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO BlockManagerInfo: Removed broadcast_3_piece0 on 114.212.85.154:41308 in memory (size: 20.7 KB, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:32 INFO ContextCleaner: Cleaned accumulator 442[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 50.150468 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 8.372387 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 39.149759 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 24.964852 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO SparkContext: Starting job: show at RunBenchmark.scala:122[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Registering RDD 24 (show at RunBenchmark.scala:122)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Got job 5 (show at RunBenchmark.scala:122) with 1 output partitions[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Final stage: ResultStage 6 (show at RunBenchmark.scala:122)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 5)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Missing parents: List(ShuffleMapStage 5)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Submitting ShuffleMapStage 5 (MapPartitionsRDD[24] at show at RunBenchmark.scala:122), which has no missing parents[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 30.9 KB, free 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 13.0 KB, free 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on 114.212.85.154:41308 (size: 13.0 KB, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1012[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Submitting 4 missing tasks from ShuffleMapStage 5 (MapPartitionsRDD[24] at show at RunBenchmark.scala:122)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSchedulerImpl: Adding task set 5.0 with 4 tasks[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Starting task 0.0 in stage 5.0 (TID 17, localhost, partition 0, PROCESS_LOCAL, 5436 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Starting task 1.0 in stage 5.0 (TID 18, localhost, partition 1, PROCESS_LOCAL, 5662 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Starting task 2.0 in stage 5.0 (TID 19, localhost, partition 2, PROCESS_LOCAL, 5662 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Starting task 3.0 in stage 5.0 (TID 20, localhost, partition 3, PROCESS_LOCAL, 5662 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Running task 0.0 in stage 5.0 (TID 17)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Running task 2.0 in stage 5.0 (TID 19)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Running task 3.0 in stage 5.0 (TID 20)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Running task 1.0 in stage 5.0 (TID 18)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 47.136674 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 10.685168 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 8.206432 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 6.96513 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 6.068706 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO CodeGenerator: Code generated in 11.352376 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Finished task 1.0 in stage 5.0 (TID 18). 1789 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Finished task 2.0 in stage 5.0 (TID 19). 1789 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Finished task 3.0 in stage 5.0 (TID 20). 1702 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Finished task 0.0 in stage 5.0 (TID 17). 1702 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Finished task 2.0 in stage 5.0 (TID 19) in 144 ms on localhost (1/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Finished task 1.0 in stage 5.0 (TID 18) in 146 ms on localhost (2/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Finished task 3.0 in stage 5.0 (TID 20) in 144 ms on localhost (3/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Finished task 0.0 in stage 5.0 (TID 17) in 148 ms on localhost (4/4)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSchedulerImpl: Removed TaskSet 5.0, whose tasks have all completed, from pool [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: ShuffleMapStage 5 (show at RunBenchmark.scala:122) finished in 0.150 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: looking for newly runnable stages[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: running: Set()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: waiting: Set(ResultStage 6)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: failed: Set()[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Submitting ResultStage 6 (MapPartitionsRDD[28] at show at RunBenchmark.scala:122), which has no missing parents[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 36.1 KB, free 877.1 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 15.3 KB, free 877.1 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on 114.212.85.154:41308 (size: 15.3 KB, free: 877.2 MB)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO SparkContext: Created broadcast 6 from broadcast at DAGScheduler.scala:1012[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 6 (MapPartitionsRDD[28] at show at RunBenchmark.scala:122)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSchedulerImpl: Adding task set 6.0 with 1 tasks[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Starting task 0.0 in stage 6.0 (TID 21, localhost, partition 0, PROCESS_LOCAL, 5321 bytes)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Running task 0.0 in stage 6.0 (TID 21)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO ShuffleBlockFetcherIterator: Getting 0 non-empty blocks out of 4 blocks[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 3 ms[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO Executor: Finished task 0.0 in stage 6.0 (TID 21). 3820 bytes result sent to driver[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSetManager: Finished task 0.0 in stage 6.0 (TID 21) in 34 ms on localhost (1/1)[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO TaskSchedulerImpl: Removed TaskSet 6.0, whose tasks have all completed, from pool [0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: ResultStage 6 (show at RunBenchmark.scala:122) finished in 0.034 s[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO DAGScheduler: Job 5 finished: show at RunBenchmark.scala:122, took 0.210287 s[0m
+[0m[[0minfo[0m] [0m+----+---------+---------+---------+------+[0m
+[0m[[0minfo[0m] [0m|name|minTimeMs|maxTimeMs|avgTimeMs|stdDev|[0m
+[0m[[0minfo[0m] [0m+----+---------+---------+---------+------+[0m
+[0m[[0minfo[0m] [0m+----+---------+---------+---------+------+[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mResults: sqlContext.read.json("file:/home/wuxiaoqi/Git/spark-sql-perf/performance//timestamp=1483542991826")[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO SparkContext: Invoking stop() from shutdown hook[0m
+[0m[[0minfo[0m] [0m16:31 信息: org.apache.parquet.hadoop.InternalParquetRecordWriter: Flushing mem columnStore to file. allocated memory: 194,000[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.InternalParquetRecordWriter: Flushing mem columnStore to file. allocated memory: 224,264[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 22,871B for [source] INT64: 26,781 values, 33,543B raw, 22,824B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 586 entries, 4,688B raw, 586B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 19,578B for [source] INT64: 23,334 values, 26,309B raw, 19,531B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 438 entries, 3,504B raw, 438B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 33,596B for [target] INT64: 26,781 values, 33,543B raw, 33,549B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 666 entries, 5,328B raw, 666B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 26,362B for [target] INT64: 23,334 values, 26,309B raw, 26,315B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 478 entries, 3,824B raw, 478B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.InternalParquetRecordWriter: Flushing mem columnStore to file. allocated memory: 170,720[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 16,879B for [source] INT64: 20,640 values, 23,270B raw, 16,832B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 336 entries, 2,688B raw, 336B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 23,323B for [target] INT64: 20,640 values, 23,270B raw, 23,276B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 364 entries, 2,912B raw, 364B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.InternalParquetRecordWriter: Flushing mem columnStore to file. allocated memory: 238,472[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 23,412B for [source] INT64: 28,554 values, 35,766B raw, 23,365B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 602 entries, 4,816B raw, 602B comp}[0m
+[0m[[0minfo[0m] [0m2017-1-4 23:16:31 信息: org.apache.parquet.hadoop.ColumnChunkPageWriteStore: written 35,822B for [target] INT64: 28,554 values, 35,766B raw, 35,775B comp, 1 pages, encodings: [RLE, PLAIN_DICTIONARY, BIT_PACKED], dic { 653 entries, 5,224B raw, 653B comp}[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO SparkUI: Stopped Spark web UI at http://114.212.85.154:4040[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped![0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO MemoryStore: MemoryStore cleared[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO BlockManager: BlockManager stopped[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO BlockManagerMaster: BlockManagerMaster stopped[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped![0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO SparkContext: Successfully stopped SparkContext[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO ShutdownHookManager: Shutdown hook called[0m
+[0m[[31merror[0m] [0m17/01/04 23:16:33 INFO ShutdownHookManager: Deleting directory /tmp/spark-40bb12e6-d39b-4fb8-8abe-339be0436ea3[0m
+[0m[[32msuccess[0m] [0mTotal time: 7 s, completed 2017-1-4 23:16:33[0m
