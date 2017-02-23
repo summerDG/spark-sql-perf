@@ -87,6 +87,10 @@ abstract class Benchmark(
     case "on" => sqlContext.setConf("spark.sql.hypercube.strategiesChoosing", "true")
   }
 
+  val defaultConfig = Variation("strategiesChoosing", Seq("off")) {
+    case "off" => sqlContext.setConf("spark.sql.hypercube.strategiesChoosing", "false")
+  }
+
   /**
    * Starts an experiment run with a given set of executions to run.
    *

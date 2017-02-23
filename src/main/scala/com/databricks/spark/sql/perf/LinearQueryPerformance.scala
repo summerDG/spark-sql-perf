@@ -3,15 +3,15 @@ package com.databricks.spark.sql.perf
 import java.io.{File, FilenameFilter}
 
 import org.apache.spark.sql.functions._
-import org.apache.spark.sql.{Row, _}
 import org.apache.spark.sql.types.{StructField, StructType}
+import org.apache.spark.sql.{Row, _}
 
 import scala.io.Source
 
 /**
  * Created by wuxiaoqi on 17-1-4.
  */
-class MultiJoinPerformance extends Benchmark {
+class LinearQueryPerformance extends Benchmark {
 
   import sqlContext.implicits._
 
@@ -79,7 +79,7 @@ class MultiJoinPerformance extends Benchmark {
     new Query(
       s"multi-join - datasize: $dataSize",
       longsWithData.as("a").join(longsWithData.as("b"), $"a.target" === $"b.source")
-        .join(longsWithData.as("c"), $"b.target" === $"c.source" && $"c.target" === $"a.source"))
+        .join(longsWithData.as("c"), $"b.target" === $"c.source"))
   }
   val varyNumMatches = Seq(1, 2, 4, 8, 16).map { numCopies =>
     val longs = joinTables(0).data
@@ -87,6 +87,6 @@ class MultiJoinPerformance extends Benchmark {
     new Query(
       s"multi-join - numMatches: $numCopies",
       copiedInts.as("a").join(longs.as("b"), $"a.target" === $"b.source")
-        .join(longs.as("c"), $"b.target" === $"c.source" && $"c.target" === $"a.source"))
+        .join(longs.as("c"), $"b.target" === $"c.source"))
   }
 }
