@@ -113,6 +113,7 @@ trait Benchmarkable extends Logging {
 
   protected def measureTimeMs[A](f: => A): Double = {
     val startTime = System.nanoTime()
+    println(s"start time:${startTime.toDouble / 1000000}")
     f
     val endTime = System.nanoTime()
     (endTime - startTime).toDouble / 1000000

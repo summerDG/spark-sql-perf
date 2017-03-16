@@ -2,7 +2,9 @@ package com.databricks.spark.sql.perf
 
 import java.io.{File, FilenameFilter}
 
+import com.databricks.spark.sql.perf.ExecutionMode.CountResults
 import org.apache.spark.sql.functions._
+import org.apache.spark.sql.internal.SQLConf
 import org.apache.spark.sql.{Row, _}
 import org.apache.spark.sql.types.{StructField, StructType}
 
@@ -30,7 +32,7 @@ class CircleQueryPerformance extends Benchmark {
 //        case x=>
 //          Seq.fill(2)((x, x))
 //      }
-      sqlContext.sparkContext.parallelize(files, partitions).flatMap { f =>
+      sqlContext.sparkContext.parallelize(files.flatMap { f =>
         val ego = f.getName.substring(0, f.getName.indexOf(".")).toLong
         Source.fromFile(f).getLines().flatMap {
           case line =>
@@ -41,7 +43,7 @@ class CircleQueryPerformance extends Benchmark {
               ps.sliding(2).map(x => (x(0), x(1))).toSeq :+ (ego, ps(0)) :+ (ps(ps.length - 1), ego)
             }
         }
-      }
+      }, partitions).repartition(partitions)
     }
 
     generatedData.setName(s"$name")
@@ -51,15 +53,13 @@ class CircleQueryPerformance extends Benchmark {
         Row.fromTuple(l)
       }
     }
-    println(s"df size: ${rows.count()}")
+//    sqlContext.createDataFrame(rows, schema).write.json("twitter")
+//    println(s"df size: ${rows.count()}")
     sqlContext.createDataFrame(rows, schema)
   }
 
   val joinTables = Seq(
-    Table("edges", df(s"edges", edges, 4,
-      'source.long,
-      'target.long)),
-    Table("circles", df(s"circles", edges, 4,
+    Table("edges", df(s"edges", edges, sqlContext.getConf(SQLConf.SHUFFLE_PARTITIONS.key).toInt / 8,
       'source.long,
       'target.long))
   )
@@ -79,7 +79,8 @@ class CircleQueryPerformance extends Benchmark {
     new Query(
       s"multi-join - datasize: $dataSize",
       longsWithData.as("a").join(longsWithData.as("b"), $"a.target" === $"b.source")
-        .join(longsWithData.as("c"), $"b.target" === $"c.source" && $"c.target" === $"a.source"))
+        .join(longsWithData.as("c"), $"b.target" === $"c.source" && $"c.target" === $"a.source"),
+      executionMode = CountResults)
   }
   val varyNumMatches = Seq(1, 2, 4, 8, 16).map { numCopies =>
     val longs = joinTables(0).data
@@ -87,6 +88,7 @@ class CircleQueryPerformance extends Benchmark {
     new Query(
       s"multi-join - numMatches: $numCopies",
       copiedInts.as("a").join(longs.as("b"), $"a.target" === $"b.source")
-        .join(longs.as("c"), $"b.target" === $"c.source" && $"c.target" === $"a.source"))
+        .join(longs.as("c"), $"b.target" === $"c.source" && $"c.target" === $"a.source"),
+      executionMode = CountResults)
   }
 }

@@ -123,6 +123,7 @@ class Query(
       val executionTime = measureTimeMs {
         executionMode match {
           case ExecutionMode.CollectResults => dataFrame.rdd.collect()
+          case ExecutionMode.CountResults => println(s"size of result: ${dataFrame.rdd.count()}")
           case ExecutionMode.ForeachResults => dataFrame.rdd.foreach { row => Unit }
           case ExecutionMode.WriteParquet(location) =>
             dataFrame.write.parquet(s"$location/$name.parquet")

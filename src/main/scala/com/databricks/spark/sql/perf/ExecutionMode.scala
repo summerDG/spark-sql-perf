@@ -49,4 +49,8 @@ case object ExecutionMode {
   case object SparkPerfResults extends ExecutionMode {
     override def toString: String = "sparkPerf"
   }
+
+  case object CountResults extends ExecutionMode {
+    override def toString: String = "count"
+  }
 }
