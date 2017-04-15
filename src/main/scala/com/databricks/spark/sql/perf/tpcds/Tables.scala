@@ -17,12 +17,11 @@
 package com.databricks.spark.sql.perf.tpcds
 
 import scala.sys.process._
-
 import org.slf4j.LoggerFactory
-
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.{Row, SQLContext, SaveMode}
+import org.apache.spark.storage.StorageLevel
 
 class Tables(sqlContext: SQLContext, dsdgenDir: String, scaleFactor: Int) extends Serializable {
   import sqlContext.implicits._
@@ -188,7 +187,9 @@ class Tables(sqlContext: SQLContext, dsdgenDir: String, scaleFactor: Int) extend
     def createTemporaryTable(location: String, format: String): Unit = {
       println(s"Creating temporary table $name using data stored in $location.")
       log.info(s"Creating temporary table $name using data stored in $location.")
-      sqlContext.read.format(format).load(location).registerTempTable(name)
+      val df = sqlContext.read.format(format).load(location).persist(StorageLevel.MEMORY_AND_DISK)
+      println(s"Temporary table $name cardinality: ${df.count()}")
+      df.createOrReplaceTempView(name)
     }
   }
 

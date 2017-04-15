@@ -1,55 +1,25 @@
-/*
- * Copyright 2015 Databricks Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.databricks.spark.sql.perf
 
 import java.net.InetAddress
 
+import com.databricks.spark.sql.perf.tpcds.{MultiJoinTPCDS, TPCDS, Tables}
+import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SQLContext
-import org.apache.spark.sql.catalyst.InternalRow
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.internal.SQLConf
-import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.util.Try
 
-case class RunConfig(
-    benchmarkName: String = null,
-    filter: Option[String] = None,
-    iterations: Int = 3,
-    baseline: Option[Long] = None,
-    source: Option[String] = None,
-    parallel: Option[Int] = None,
-    cardinality: Option[Int] = None,
-    tries: Option[Int] = None,
-    dsdgenDir: Option[String] = None,
-    location: Option[String] = None,
-    scale: Option[Int] = None)
-
 /**
- * Runs a benchmark locally and prints the results to the screen.
+ * Created by wuxiaoqi on 17-3-16.
  */
-object RunBenchmark {
+object RunTPCDSBenchmark {
   def main(args: Array[String]): Unit = {
     val parser = new scopt.OptionParser[RunConfig]("spark-sql-perf") {
       head("spark-sql-perf", "0.2.0")
       opt[String]('b', "benchmark")
         .action { (x, c) => c.copy(benchmarkName = x) }
         .text("the name of the benchmark to run")
-        .required()
       opt[String]('f', "filter")
         .action((x, c) => c.copy(filter = Some(x)))
         .text("a filter on the name of the queries to run")
@@ -57,8 +27,8 @@ object RunBenchmark {
         .action((x, c) => c.copy(iterations = x))
         .text("the number of iterations to run")
       opt[Long]('c', "compare")
-          .action((x, c) => c.copy(baseline = Some(x)))
-          .text("the timestamp of the baseline experiment to compare with")
+        .action((x, c) => c.copy(baseline = Some(x)))
+        .text("the timestamp of the baseline experiment to compare with")
       opt[String]('s', "source")
         .action((x, c) => c.copy(source = Some(x)))
         .text("The data source of performance testing")
@@ -71,6 +41,17 @@ object RunBenchmark {
       opt[Int]('t', "tries")
         .action((x, c) => c.copy(tries = Some(x)))
         .text("The number of estimations")
+      opt[String]('d', "dsdgenDir")
+        .action((x, c) => c.copy(dsdgenDir = Some(x)))
+        .text("The location of dsdgen tool installed in your machines")
+        .required()
+      opt[String]('l', "location")
+        .action((x, c) => c.copy(location = Some(x)))
+        .text("The location for saving TPC-DS tables")
+        .required()
+      opt[Int]('S', "scale")
+        .action((x, c) => c.copy(scale = Some(x)))
+        .text("Volume of data to generate in GB. Default 1.")
 
       help("help")
         .text("prints this usage text")
@@ -86,11 +67,10 @@ object RunBenchmark {
 
   def run(config: RunConfig): Unit = {
     val conf = new SparkConf()
-        .setAppName(getClass.getName)
-        .set("spark.memory.offHeap.enabled", "true")
-        .set("spark.memory.offHeap.size", "20G")
-        .set("spark.memory.storageFraction", "0.2")
-        .set("spark.memory.fraction", "0.6")
+      .setAppName(getClass.getName)
+      .set("spark.memory.storageFraction", "0.2")
+      .set("spark.memory.fraction", "0.7")
+      .set("spark.driver.maxResultSize", "20G")
 
     val sc = SparkContext.getOrCreate(conf)
     val sqlContext = SQLContext.getOrCreate(sc)
@@ -98,7 +78,7 @@ object RunBenchmark {
 
     sqlContext.setConf("spark.driver.allowMultipleContexts", "true")
     sqlContext.setConf("spark.sql.codegen.wholeStage", "false")
-//    sqlContext.setConf("spark.sql.hypercube.strategiesChoosing", strategiesChoosing)
+    //    sqlContext.setConf("spark.sql.hypercube.strategiesChoosing", strategiesChoosing)
     sqlContext.setConf("spark.sql.hypercube.sampleCardinality",
       config.cardinality.getOrElse(1000).toString)
     sqlContext.setConf("spark.sql.hypercube.sketchTries",
@@ -112,29 +92,40 @@ object RunBenchmark {
     sqlContext.setConf("spark.sql.perf.results", new java.io.File("performance").toURI.toString)
     sqlContext.setConf("spark.sql.perf.dataSource",
       config.source.getOrElse("/home/wuxiaoqi/multi-join/test-data/small-data/"))
-
-    val benchmark = Try {
-      Class.forName(config.benchmarkName)
-          .newInstance()
-          .asInstanceOf[Benchmark]
-    } getOrElse {
-      Class.forName("com.databricks.spark.sql.perf." + config.benchmarkName)
-          .newInstance()
-          .asInstanceOf[Benchmark]
+    if (!config.location.isDefined) {
+      throw new IllegalArgumentException("location is not set. Please use --help to see usage.")
     }
 
+    // scale is volume of data to generate in GB. Default 1.
+    val scale = config.scale match {
+      case Some(s) => s
+      case _ => 1
+    }
+    val tables = config.dsdgenDir match {
+      case Some(dsdgenDir) => new Tables(sqlContext, dsdgenDir, scale)
+      case _ => throw new IllegalArgumentException("dsdgenDir must be set.")
+    }
+    tables.genData(config.location.get, "json", false, true, false, false, false)
+    tables.createTemporaryTables(config.location.get, "json", "store_sales")
+    tables.createTemporaryTables(config.location.get, "json", "customer_demographics")
+    tables.createTemporaryTables(config.location.get, "json", "item")
+    tables.createTemporaryTables(config.location.get, "json", "promotion")
+    tables.createTemporaryTables(config.location.get, "json", "date_dim")
+    tables.createTemporaryTables(config.location.get, "json", "customer")
+    tables.createTemporaryTables(config.location.get, "json", "customer_address")
+    tables.createTemporaryTables(config.location.get, "json", "store")
+    tables.createTemporaryTables(config.location.get, "json", "inventory")
+
+    val benchmark = new MultiJoinTPCDS(sqlContext = sqlContext)
     println("== QUERY LIST ==")
-    benchmark.allQueries.foreach(println)
+    benchmark.queries.foreach(println)
     val allQueries = config.filter.map { f =>
-      benchmark.allQueries.filter(_.name contains f)
+      benchmark.queries.filter(_.name contains f)
     } getOrElse {
-      benchmark.allQueries
+      benchmark.queries
     }
 
     val variations = benchmark.strategiesChoosing
-
-    println("== QUERY LIST ==")
-    allQueries.foreach(println)
 
     val experiment = benchmark.runExperiment(
       executionsToRun = allQueries,
@@ -150,16 +141,16 @@ object RunBenchmark {
     sqlContext.setConf("spark.sql.shuffle.partitions", "1")
     println("== Choosing Strategies ==")
     experiment.getCurrentRuns().where($"tags".getItem("strategiesChoosing") === "on")
-        .withColumn("result", explode($"results"))
-        .select("result.*")
-        .groupBy("name")
-        .agg(
-          min($"executionTime") as 'minTimeMs,
-          max($"executionTime") as 'maxTimeMs,
-          avg($"executionTime") as 'avgTimeMs,
-          stddev($"executionTime") as 'stdDev)
-        .orderBy("name")
-        .show(truncate = false)
+      .withColumn("result", explode($"results"))
+      .select("result.*")
+      .groupBy("name")
+      .agg(
+        min($"executionTime") as 'minTimeMs,
+        max($"executionTime") as 'maxTimeMs,
+        avg($"executionTime") as 'avgTimeMs,
+        stddev($"executionTime") as 'stdDev)
+      .orderBy("name")
+      .show(truncate = false)
     println("== Not Choosing Strategies ==")
     experiment.getCurrentRuns().where($"tags".getItem("strategiesChoosing") === "off")
       .withColumn("result", explode($"results"))
@@ -179,18 +170,18 @@ object RunBenchmark {
       val thisRunTime = when($"timestamp" === experiment.timestamp, $"executionTime").otherwise(null)
 
       val data = sqlContext.read.json(benchmark.resultsLocation)
-          .coalesce(1)
-          .where(s"timestamp IN ($baseTimestamp, ${experiment.timestamp})")
-          .withColumn("result", explode($"results"))
-          .select("timestamp", "result.*")
-          .groupBy("name")
-          .agg(
-            avg(baselineTime) as 'baselineTimeMs,
-            avg(thisRunTime) as 'thisRunTimeMs,
-            stddev(baselineTime) as 'stddev)
-          .withColumn(
-            "percentChange", ($"baselineTimeMs" - $"thisRunTimeMs") / $"baselineTimeMs" * 100)
-          .filter('thisRunTimeMs.isNotNull)
+        .coalesce(1)
+        .where(s"timestamp IN ($baseTimestamp, ${experiment.timestamp})")
+        .withColumn("result", explode($"results"))
+        .select("timestamp", "result.*")
+        .groupBy("name")
+        .agg(
+          avg(baselineTime) as 'baselineTimeMs,
+          avg(thisRunTime) as 'thisRunTimeMs,
+          stddev(baselineTime) as 'stddev)
+        .withColumn(
+          "percentChange", ($"baselineTimeMs" - $"thisRunTimeMs") / $"baselineTimeMs" * 100)
+        .filter('thisRunTimeMs.isNotNull)
 
       data.show(truncate = false)
     }
